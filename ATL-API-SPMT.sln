@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28809.33
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATL-API-SPMT", "src\ATL-API-SPMT\ATL-API-SPMT.csproj", "{7EB0482C-3B7D-48A3-B51B-45AC227FE129}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATL-API-SPMT", "src\ATL-API-SPMT\ATL-API-SPMT.csproj", "{7EB0482C-3B7D-48A3-B51B-45AC227FE129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATL-API-SPMT.Tests", "tests\ATL-API-SPMT.Tests\ATL-API-SPMT.Tests.csproj", "{459F43D5-86F7-4AFC-812B-A4974CF161A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7EB0482C-3B7D-48A3-B51B-45AC227FE129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EB0482C-3B7D-48A3-B51B-45AC227FE129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EB0482C-3B7D-48A3-B51B-45AC227FE129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459F43D5-86F7-4AFC-812B-A4974CF161A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459F43D5-86F7-4AFC-812B-A4974CF161A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459F43D5-86F7-4AFC-812B-A4974CF161A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459F43D5-86F7-4AFC-812B-A4974CF161A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

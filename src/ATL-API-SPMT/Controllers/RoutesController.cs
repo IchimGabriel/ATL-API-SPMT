@@ -32,7 +32,7 @@ namespace ATL_API_SPMT.Controllers
             return await _context.Routes.ToListAsync();
         }
 
-        // GET: api/Routes/5
+        // GET: api/Routes/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(Route), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -49,7 +49,7 @@ namespace ATL_API_SPMT.Controllers
             return route;
         }
 
-        // PUT: api/Routes/5
+        // PUT: api/Routes/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpPut("{id:guid}")]
         [ProducesResponseType(typeof(Route), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -94,7 +94,7 @@ namespace ATL_API_SPMT.Controllers
             return CreatedAtAction("GetRoute", new { id = route.Route_Id }, route);
         }
 
-        // DELETE: api/Routes/5
+        // DELETE: api/Routes/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpDelete("{id:guid}")]
         [ProducesResponseType(typeof(Route), StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

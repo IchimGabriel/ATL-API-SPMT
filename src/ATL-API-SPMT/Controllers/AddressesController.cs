@@ -31,7 +31,7 @@ namespace ATL_API_SPMT.Controllers
             return await _context.Addresses.ToListAsync();
         }
 
-        // GET: api/Addresses/5
+        // GET: api/Addresses/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(Address), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -47,7 +47,7 @@ namespace ATL_API_SPMT.Controllers
             return address;
         }
 
-        // PUT: api/Addresses/5
+        // PUT: api/Addresses/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpPut("{id:guid}")]
         [ProducesResponseType(typeof(Address), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -91,7 +91,7 @@ namespace ATL_API_SPMT.Controllers
             return CreatedAtAction("GetAddress", new { id = address.Address_Id }, address);
         }
 
-        // DELETE: api/Addresses/5
+        // DELETE: api/Addresses/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpDelete("{id:guid}")]
         [ProducesResponseType(typeof(Address), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

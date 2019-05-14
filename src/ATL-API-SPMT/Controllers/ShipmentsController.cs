@@ -32,7 +32,7 @@ namespace ATL_API_SPMT.Controllers
             return await _context.Shipments.ToListAsync();
         }
 
-        // GET: api/Shipments/5
+        // GET: api/Shipments/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(Shipment), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -49,7 +49,7 @@ namespace ATL_API_SPMT.Controllers
             return shipment;
         }
 
-        // PUT: api/Shipments/5
+        // PUT: api/Shipments/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpPut("{id:guid}")]
         [ProducesResponseType(typeof(Shipment), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -94,7 +94,7 @@ namespace ATL_API_SPMT.Controllers
             return CreatedAtAction("GetShipment", new { id = shipment.Shipment_Id }, shipment);
         }
 
-        // DELETE: api/Shipments/5
+        // DELETE: api/Shipments/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpDelete("{id:guid}")]
         [ProducesResponseType(typeof(Shipment), StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

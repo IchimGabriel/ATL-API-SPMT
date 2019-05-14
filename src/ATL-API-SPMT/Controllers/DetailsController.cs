@@ -31,7 +31,7 @@ namespace ATL_API_SPMT.Controllers
             return await _context.Details.ToListAsync();
         }
 
-        // GET: api/Details/5
+        // GET: api/Details/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(Detail), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -47,7 +47,7 @@ namespace ATL_API_SPMT.Controllers
             return detail;
         }
 
-        // PUT: api/Details/5
+        // PUT: api/Details/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpPut("{id:guid}")]
         [ProducesResponseType(typeof(Detail), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -92,7 +92,7 @@ namespace ATL_API_SPMT.Controllers
             return CreatedAtAction("GetDetail", new { id = detail.Detail_Id }, detail);
         }
 
-        // DELETE: api/Details/5
+        // DELETE: api/Details/b65d55e7-f9e1-44c7-a38b-d527fb7cabde
         [HttpDelete("{id:guid}")]
         [ProducesResponseType(typeof(Detail), StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
