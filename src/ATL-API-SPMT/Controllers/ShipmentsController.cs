@@ -24,13 +24,19 @@ namespace ATL_API_SPMT.Controllers
 
         // GET: api/Shipments
         [HttpGet]
+        [ProducesResponseType(typeof(Shipment), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Shipment>>> GetShipments()
         {
             return await _context.Shipments.ToListAsync();
         }
 
         // GET: api/Shipments/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(Shipment), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Shipment>> GetShipment(Guid id)
         {
             var shipment = await _context.Shipments.FindAsync(id);
@@ -44,7 +50,10 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // PUT: api/Shipments/5
-        [HttpPut("{id}")]
+        [HttpPut("{id:guid}")]
+        [ProducesResponseType(typeof(Shipment), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> PutShipment(Guid id, Shipment shipment)
         {
             if (id != shipment.Shipment_Id)
@@ -75,6 +84,8 @@ namespace ATL_API_SPMT.Controllers
 
         // POST: api/Shipments
         [HttpPost]
+        [ProducesResponseType(typeof(Shipment), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Shipment>> PostShipment(Shipment shipment)
         {
             _context.Shipments.Add(shipment);
@@ -84,7 +95,10 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // DELETE: api/Shipments/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
+        [ProducesResponseType(typeof(Shipment), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Shipment>> DeleteShipment(Guid id)
         {
             var shipment = await _context.Shipments.FindAsync(id);

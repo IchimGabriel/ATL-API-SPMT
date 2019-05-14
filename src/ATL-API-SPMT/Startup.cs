@@ -23,11 +23,23 @@ namespace ATL_API_SPMT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+                .AddJsonOptions(options => 
+                    options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            services.AddDbContext<ShipmentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ShipmentContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddSwaggerGen(options => options.SwaggerDoc("v1", new Info { Title = "Advanced Transport and Logistics – FF (SPMT)", Version = "v1" }));
+            services.AddSwaggerGen(options => 
+                options.SwaggerDoc("v1", new Info {
+                    Title = "Advanced Transport and Logistics – FF (SPMT)",
+                    Version = "v1",
+                    Contact = new Contact
+                    {
+                        Name = "Gabriel Ichim",
+                        Email = "ichimgabriel75@gmail.com",
+                        Url = "https://codexapi.com"
+                    }
+                }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

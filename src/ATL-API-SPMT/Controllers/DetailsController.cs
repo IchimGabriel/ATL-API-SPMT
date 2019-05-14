@@ -24,13 +24,17 @@ namespace ATL_API_SPMT.Controllers
 
         // GET: api/Details
         [HttpGet]
+        [ProducesResponseType(typeof(Detail), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult<IEnumerable<Detail>>> GetDetails()
         {
             return await _context.Details.ToListAsync();
         }
 
         // GET: api/Details/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(Detail), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Detail>> GetDetail(Guid id)
         {
             var detail = await _context.Details.FindAsync(id);
@@ -44,7 +48,10 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // PUT: api/Details/5
-        [HttpPut("{id}")]
+        [HttpPut("{id:guid}")]
+        [ProducesResponseType(typeof(Detail), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> PutDetail(Guid id, Detail detail)
         {
             if (id != detail.Detail_Id)
@@ -75,6 +82,8 @@ namespace ATL_API_SPMT.Controllers
 
         // POST: api/Details
         [HttpPost]
+        [ProducesResponseType(typeof(Detail), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Detail>> PostDetail(Detail detail)
         {
             _context.Details.Add(detail);
@@ -84,7 +93,9 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // DELETE: api/Details/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
+        [ProducesResponseType(typeof(Detail), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Detail>> DeleteDetail(Guid id)
         {
             var detail = await _context.Details.FindAsync(id);

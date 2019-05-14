@@ -8,5 +8,6 @@ namespace ATL_API_SPMT.Models
         [Key]
         public Guid Unit_Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

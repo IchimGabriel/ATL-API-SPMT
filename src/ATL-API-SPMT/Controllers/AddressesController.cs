@@ -24,13 +24,17 @@ namespace ATL_API_SPMT.Controllers
 
         // GET: api/Addresses
         [HttpGet]
+        [ProducesResponseType(typeof(Address), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Address>>> GetAddresses()
         {
             return await _context.Addresses.ToListAsync();
         }
 
         // GET: api/Addresses/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(Address), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Address>> GetAddress(Guid id)
         {
             var address = await _context.Addresses.FindAsync(id);
@@ -44,7 +48,9 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // PUT: api/Addresses/5
-        [HttpPut("{id}")]
+        [HttpPut("{id:guid}")]
+        [ProducesResponseType(typeof(Address), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PutAddress(Guid id, Address address)
         {
             if (id != address.Address_Id)
@@ -75,6 +81,8 @@ namespace ATL_API_SPMT.Controllers
 
         // POST: api/Addresses
         [HttpPost]
+        [ProducesResponseType(typeof(Address), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Address>> PostAddress(Address address)
         {
             _context.Addresses.Add(address);
@@ -84,7 +92,9 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // DELETE: api/Addresses/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
+        [ProducesResponseType(typeof(Address), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Address>> DeleteAddress(Guid id)
         {
             var address = await _context.Addresses.FindAsync(id);

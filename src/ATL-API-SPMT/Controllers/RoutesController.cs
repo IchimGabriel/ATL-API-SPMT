@@ -24,13 +24,19 @@ namespace ATL_API_SPMT.Controllers
 
         // GET: api/Routes
         [HttpGet]
+        [ProducesResponseType(typeof(Route), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Route>>> GetRoutes()
         {
             return await _context.Routes.ToListAsync();
         }
 
         // GET: api/Routes/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(Route), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Route>> GetRoute(Guid id)
         {
             var route = await _context.Routes.FindAsync(id);
@@ -44,7 +50,10 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // PUT: api/Routes/5
-        [HttpPut("{id}")]
+        [HttpPut("{id:guid}")]
+        [ProducesResponseType(typeof(Route), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> PutRoute(Guid id, Route route)
         {
             if (id != route.Route_Id)
@@ -75,6 +84,8 @@ namespace ATL_API_SPMT.Controllers
 
         // POST: api/Routes
         [HttpPost]
+        [ProducesResponseType(typeof(Route), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Route>> PostRoute(Route route)
         {
             _context.Routes.Add(route);
@@ -84,7 +95,10 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // DELETE: api/Routes/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
+        [ProducesResponseType(typeof(Route), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Route>> DeleteRoute(Guid id)
         {
             var route = await _context.Routes.FindAsync(id);

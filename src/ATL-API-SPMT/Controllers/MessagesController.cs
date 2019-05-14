@@ -24,13 +24,17 @@ namespace ATL_API_SPMT.Controllers
 
         // GET: api/Messages
         [HttpGet]
+        [ProducesResponseType(typeof(Message), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Message>>> GetMessages()
         {
             return await _context.Messages.ToListAsync();
         }
 
         // GET: api/Messages/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(Message), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Message>> GetMessage(Guid id)
         {
             var message = await _context.Messages.FindAsync(id);
@@ -44,7 +48,10 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // PUT: api/Messages/5
-        [HttpPut("{id}")]
+        [HttpPut("{id:guid}")]
+        [ProducesResponseType(typeof(Message), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> PutMessage(Guid id, Message message)
         {
             if (id != message.Message_Id)
@@ -75,6 +82,8 @@ namespace ATL_API_SPMT.Controllers
 
         // POST: api/Messages
         [HttpPost]
+        [ProducesResponseType(typeof(Message), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Message>> PostMessage(Message message)
         {
             _context.Messages.Add(message);
@@ -84,7 +93,9 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // DELETE: api/Messages/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
+        [ProducesResponseType(typeof(Message), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Message>> DeleteMessage(Guid id)
         {
             var message = await _context.Messages.FindAsync(id);

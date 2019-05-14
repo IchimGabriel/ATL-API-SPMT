@@ -7,6 +7,7 @@ namespace ATL_API_SPMT.Models
     {
         [Key]
         public Guid Route_Id { get; set; }
+        public string RouteName { get; set; }
         public string RouteNodes { get; set; }
         public int Total_KM { get; set; }
         public float Total_CO2 { get; set; }

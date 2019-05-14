@@ -24,13 +24,16 @@ namespace ATL_API_SPMT.Controllers
 
         // GET: api/Containers
         [HttpGet]
+        [ProducesResponseType(typeof(Container), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<Container>>> GetContainers()
         {
             return await _context.Containers.ToListAsync();
         }
 
         // GET: api/Containers/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(Container), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Container>> GetContainer(Guid id)
         {
             var container = await _context.Containers.FindAsync(id);
@@ -44,7 +47,10 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // PUT: api/Containers/5
-        [HttpPut("{id}")]
+        [HttpPut("{id:guid}")]
+        [ProducesResponseType(typeof(Container), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> PutContainer(Guid id, Container container)
         {
             if (id != container.Unit_Id)
@@ -75,6 +81,8 @@ namespace ATL_API_SPMT.Controllers
 
         // POST: api/Containers
         [HttpPost]
+        [ProducesResponseType(typeof(Container), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Container>> PostContainer(Container container)
         {
             _context.Containers.Add(container);
@@ -84,7 +92,9 @@ namespace ATL_API_SPMT.Controllers
         }
 
         // DELETE: api/Containers/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
+        [ProducesResponseType(typeof(Container), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Container>> DeleteContainer(Guid id)
         {
             var container = await _context.Containers.FindAsync(id);
